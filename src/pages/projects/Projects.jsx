@@ -1,5 +1,5 @@
 import CardProjects from "../../components/cardProjects/CardProjects"
-import Skeleton from "../../components/skeleton/skeleton";
+import Skeleton from "../../components/skeleton/Skeleton";
 import { Section } from "../../styles/general/styles";
 import { DivCard } from "./ProjectsStyles";
 
