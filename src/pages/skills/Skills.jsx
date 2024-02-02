@@ -1,11 +1,15 @@
-import CardSkills from "../../components/cardSkills/cardSkills"
+
+import CardSkills from "../../components/cardSkills/cardSkills";
+import Skeleton from "../../components/skeleton/skeleton";
+import { Section } from "../../styles/general/styles";
+
+
 function Skills() {
   return (
-    <div>
-        <h1>Experiencies</h1>
-        <input type="text" placeholder="Search.." />
+    <Section>
+        <Skeleton title='Skills'/>
         <CardSkills/>
-    </div>
+    </Section>
   )
 }
 

@@ -1,16 +1,9 @@
-const darkmode = {
-    colors: {
-        powderWhite: "#FFFDF9",
-        persianGreen: "#06B49A",
-        lightBlue: "#AFDBD2",
-        darkTeal: "#3c7f8b"
-      },
-      fonts: ["Arial", "sans-serif"],
-      fontSizes: {
-        text: "1rem",
-        subtitles: "2rem",
-        titles: "3rem"
-      }
-}
-
-export default darkmode;
+export const themeNight = {
+  body: '#111111',
+  text: '#ffffff',
+  textCard : '#cbc9bd',
+  background: '#000000',
+  border: '#2c2f33',
+  textDescription: '#cbc0b5',
+  borderhover:  '#464a51'
+};
