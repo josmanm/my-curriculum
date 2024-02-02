@@ -1,6 +1,5 @@
-
 import CardSkills from "../../components/cardSkills/cardSkills";
-import Skeleton from "../../components/skeleton/skeleton";
+import Skeleton from "../../components/skeleton/Skeleton";
 import { Section } from "../../styles/general/styles";
 
 

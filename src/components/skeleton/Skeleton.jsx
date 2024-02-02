@@ -1,4 +1,4 @@
-import { Div, Input, TitleH1 } from '../../styles/general/styles'
+import { Div, TitleH1 } from '../../styles/general/styles'
 
 function Skeleton(props) {
   return (
