@@ -36,7 +36,7 @@ function Router() {
               <Route path="skills" element={<Skills/>}></Route>
               <Route path="projects" element={<Projects/>} ></Route>
               <Route path="education" element={<Education/>} ></Route>
-              <Route path="experiences" element={<Experiences/>} ></Route>
+              <Route path="experience" element={<Experiences/>} ></Route>
               <Route path="resumen" element={<Resumen/>} ></Route>
               <Route path="contact" element={<Contact/>} ></Route>
               <Route path="/:id" element={<SkillsView/>} ></Route>
