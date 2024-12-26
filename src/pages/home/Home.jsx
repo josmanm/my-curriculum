@@ -50,7 +50,7 @@ function Home() {
   return (
     <Section>
       <TextDiv>
-        <TitleH1>Santigo Muñoz Mera,</TitleH1>
+        <TitleH1>Santiago Muñoz Mera,</TitleH1>
         <P>
         Estudiante de Ingeniería de Sistemas en la Universidad del Cauca con sólidos conocimientos en diversos lenguajes de programación como Java, C#, Python y JavaScript. Mi formación incluye experiencia en el desarrollo de aplicaciones utilizando frameworks modernos como React y competencia en el diseño e implementación de bases de datos, destacándome en entornos MySQL y Oracle.
         </P>

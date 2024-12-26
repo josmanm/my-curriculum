@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
-export const CardEducationContainer = styled.div`
+export const CardExperienceContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 40%;
     cursor: pointer;
 `;
 
-export const CardEducationItem = styled.div`
+export const CardExperienceItem = styled.div`
     display: flex;
-    width: 49%;
-    box-sizing: border-box;
+    width: 50%;
+    box-sizing: bottom-box;
     border: 1px solid black;
     flex-direction: column;
     align-items: center;
@@ -30,8 +30,7 @@ export const Line = styled.div`
   margin: 0 16px; /* Ajusta el espacio entre la línea y el texto */
 `;
 
-
-export const CardEducationDivImg = styled.div`
+export const CardExperienceDivImg = styled.div`
     width: 50px;
     height: 50px;
 `;
@@ -42,6 +41,7 @@ export const H1 = styled.h1`
     padding 0;
     display: flex;
 `;
+
 export const P = styled.p`
     font-size: 1rem;
     margin 0;
@@ -49,15 +49,14 @@ export const P = styled.p`
     display: flex;
 `;
 
-export const CardEducationLogo = styled.img`
+export const CardExperienceLogo = styled.img`
     width: 100%;
     height: 100%;
 `;
 
 export const DivTicket = styled.div`
     display: grid;
-    width: 80%;
-    grid-template-columns: repeat(3, 0.2fr);
+    grid-template-columns: repeat(4, 0.2fr);
     align-items: center;
-    justify-content: center;
+    justify-content: start;
 `;

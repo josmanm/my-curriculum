@@ -10,30 +10,31 @@ import { VscFileBinary } from "react-icons/vsc";
 import { IoSchoolOutline } from "react-icons/io5";
 import { GiOfficeChair } from "react-icons/gi";
 
-const Nav = styled.nav`
+const StyleNav = styled.nav`
   display: flex;
-  justify-content: center;
   width: 100%;
   border-radius: 10px;
   border-bottom: 1px solid #464e59;
 `;
-const Ul = styled.ul`
+const StyleUl = styled.ul`
   display: flex;
-  width: 80%;
+  width: 100%;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   color: #464e59;
   list-style-type: none;
 `;
 const StyleLiName = styled.li`
-  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
   color: ${(props) => props.theme.text};
   &:hover {
     cursor: pointer;
   }
   &:before {
-    content: '</> ';
     color: #464e59;
     font-size: 25px;
   }
@@ -42,15 +43,35 @@ const StyleLi = styled.li`
   color: #464e59;
   background-color: #ffffff;
 `;
+
+const StyleLiNav = styled.li`
+  display: flex;
+  flex-direction: row;
+  align-items : center;
+  color: #464e59;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
 const Stylelink = styled(Link)`
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
   color: ${(props) => props.theme.textCard};
   font-size: 1rem;
   &:hover {
     border-bottom: 2px solid white;
   }
+`;
+
+const StyleA = styled.a`
+  color: ${(props) => props.theme.textCard};
+  padding: 10px;
+  text-decoration: none;
+  font-size: 1rem;
 `;
 
 const itemsNavBar = [
@@ -69,35 +90,37 @@ function NavBar() {
     dispatch(changeTheme(!isDay));
   };
   return (
-    <Nav>
-      <Ul>
-        <StyleLiName><Stylelink style={ {display:"inline-block"} } to={"home"}> Josman Santiago Muñoz Mera  </Stylelink></StyleLiName>
-        {itemsNavBar.map((item, index) => {
-          return (
-            <li key={index}>
-              <Stylelink to={item[0]}> {item[2]} {item[1]} </Stylelink>
-            </li>
-          );
-        })}
-        <StyleLi>
-          <div
-            style={{
-              backgroundColor: isDay ? "white" : "black",
-              display: "inline-block",
-              padding: "10px",
-              cursor: "pointer",
-            }}
-            onClick={isNigth}
-          >
-            {isDay ? (
-              <FaMoon size={20} color="black" />
-            ) : (
-              <FaSun size={20} color="white" />
-            )}
-          </div>
-        </StyleLi>
-      </Ul>
-    </Nav>
+    <StyleNav>
+      <StyleUl>
+        <StyleLiName>
+          <Stylelink style={ {display:"inline-block"} } to={"home"}> Josman Santiago Muñoz Mera  </Stylelink>
+        </StyleLiName>
+          {itemsNavBar.map((item, index) => {
+            return (
+              <StyleLiNav key={index}>
+                <Stylelink to={item[0]}> {item[2]} <StyleA>{item[1]}</StyleA>  </Stylelink>
+              </StyleLiNav>
+            );
+            })}
+          <StyleLi>
+            <div
+              style={{
+                backgroundColor: isDay ? "white" : "black",
+                display: "inline-block",
+                padding: "10px",
+                cursor: "pointer",
+              }}
+              onClick={isNigth}
+            >
+              {isDay ? (
+                <FaMoon size={20} color="black" />
+              ) : (
+                <FaSun size={20} color="white" />
+              )}
+            </div>
+          </StyleLi>
+      </StyleUl>
+    </StyleNav>
   );
 }
 
