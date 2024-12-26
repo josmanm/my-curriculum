@@ -52,6 +52,7 @@ export const P = styled.p`
 export const CardExperienceLogo = styled.img`
     width: 100%;
     height: 100%;
+    border-radius: 40%;
 `;
 
 export const DivTicket = styled.div`

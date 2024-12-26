@@ -15,7 +15,7 @@ const data = [
   {
     id: 1,
     name: "Universidad del Cauca",
-    logo: "https://www.unicauca.edu.co/versionP/sites/default/files/images/Escudo_Universidad_cauca.png",
+    logo: "https://portalantiguo.unicauca.edu.co/versionP/sites/default/files/images/escudo2.png",
     description: "Ingeniería de Sistemas",
     date: "2017 - 2024",
     status: "En curso",
