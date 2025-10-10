@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom"
+import { HashRouter, Route, Routes } from "react-router-dom"
 import Home from "../pages/home/Home"
 import Layout from "../components/layout/Layout"
 import Projects from "../pages/projects/Projects"
@@ -29,19 +29,22 @@ function Router() {
   return (
       <ThemeProvider theme={isDay ? themeDay : themeNight}>
         <GlobalStyle />
-        <Routes>
-            <Route element={<Layout/>}>
-              <Route index element={<Home/>} ></Route>
-              <Route path="home" element={<Home/>}></Route>
-              <Route path="skills" element={<Skills/>}></Route>
-              <Route path="projects" element={<Projects/>} ></Route>
-              <Route path="education" element={<Education/>} ></Route>
-              <Route path="experience" element={<Experiences/>} ></Route>
-              <Route path="resumen" element={<Resumen/>} ></Route>
-              <Route path="contact" element={<Contact/>} ></Route>
-              <Route path="/:id" element={<SkillsView/>} ></Route>
-            </Route>
-        </Routes>
+        <HashRouter>
+          <Routes>
+              <Route element={<Layout/>}>
+                <Route index element={<Home/>} ></Route>
+                <Route path="home" element={<Home/>}></Route>
+                <Route path="skills" element={<Skills/>}></Route>
+                <Route path="projects" element={<Projects/>} ></Route>
+                <Route path="education" element={<Education/>} ></Route>
+                <Route path="experience" element={<Experiences/>} ></Route>
+                <Route path="resumen" element={<Resumen/>} ></Route>
+                <Route path="contact" element={<Contact/>} ></Route>
+                <Route path="/:id" element={<SkillsView/>} ></Route>
+              </Route>
+          </Routes>
+        </HashRouter>
+
       </ThemeProvider>
       
   )

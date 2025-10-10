@@ -1,6 +1,6 @@
 import { Div, Section, TitleH1 } from "../../styles/general/styles";
 
-const pdfUrl = "https://github.com/josmanm/my-curriculum/blob/main/public/Josman.pdf"
+const  pdfUrl = `${import.meta.env.BASE_URL}cv.pdf`;
 
 function Resumen() {
   return (

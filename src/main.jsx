@@ -6,8 +6,6 @@ import store from "./store/store.js";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
-    <BrowserRouter  basename="my-curriculum">
       <Router />
-    </BrowserRouter>
   </Provider>
 );
