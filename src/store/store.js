@@ -1,14 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { thunk } from 'redux-thunk';
-import sesionReducer from './sesion/sesionSlice';
+import sessionReducer from './session/sessionSlice';
 
 const store = configureStore({
   reducer: {
-    sesion: sesionReducer,
+    session: sessionReducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({
     serializableCheck: false,
-  }).concat(thunk),
+  }),
 });
 
 export default store;

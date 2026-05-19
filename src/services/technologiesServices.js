@@ -1,22 +1,9 @@
-import axios from "axios";
-import endPoints from "./endPoints";
+import { technologies } from "../data/technologies";
 
 export const getTechnologies = async () => {
-    try {
-        const {data} = await axios.get(endPoints.technologies);
-        return data;
-    } catch (error) {
-        console.error(error);
-        return error;
-    }
-}
+    return technologies;
+};
 
 export const getTechnology = async (id) => {
-    try {
-        const {data} = await axios.get(`${endPoints.technologies}/${id}`);
-        return data;
-    } catch (error) {
-        console.error(error);
-        return error;
-    }
-}
+    return technologies.find((technology) => technology.name === id || String(technology.id) === String(id)) ?? null;
+};

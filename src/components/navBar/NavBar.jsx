@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { changeTheme } from "../../store/sesion/sessionActions";
+import { changeTheme } from "../../store/session/sessionActions";
 import { useDispatch, useSelector } from "react-redux";
 import { FaMoon } from "react-icons/fa";
 import { FaSun } from "react-icons/fa";
@@ -75,16 +75,16 @@ const StyleA = styled.a`
 `;
 
 const itemsNavBar = [
-  ["home", "Home", <IoPersonCircle/>],
-  ["skills", "Skills", <ImMagicWand />],
-  ["projects", "Projects",<VscFileBinary />],
-  ["education", "Education",<IoSchoolOutline />],
-  ["experience", "Experience",<GiOfficeChair />],
-  ["resumen", "Resumen"]
+  { path: "home", label: "Home", Icon: IoPersonCircle },
+  { path: "skills", label: "Skills", Icon: ImMagicWand },
+  { path: "projects", label: "Projects", Icon: VscFileBinary },
+  { path: "education", label: "Education", Icon: IoSchoolOutline },
+  { path: "experience", label: "Experience", Icon: GiOfficeChair },
+  { path: "resumen", label: "Resumen" },
 ];
 
 function NavBar() {
-  const { isDay } = useSelector((store) => store.sesion);
+  const { isDay } = useSelector((store) => store.session);
   const dispatch = useDispatch();
   const isNigth = () => {
     dispatch(changeTheme(!isDay));
@@ -92,13 +92,15 @@ function NavBar() {
   return (
     <StyleNav>
       <StyleUl>
-        <StyleLiName>
-          <Stylelink style={ {display:"inline-block"} } to={"home"}> Josman Santiago Muñoz Mera  </Stylelink>
-        </StyleLiName>
-          {itemsNavBar.map((item, index) => {
+          <StyleLiName>
+            <Stylelink style={ {display:"inline-block"} } to={"home"}> Josman Santiago Muñoz Mera  </Stylelink>
+          </StyleLiName>
+          {itemsNavBar.map((item) => {
+            const Icon = item.Icon;
+
             return (
-              <StyleLiNav key={index}>
-                <Stylelink to={item[0]}> {item[2]} <StyleA>{item[1]}</StyleA>  </Stylelink>
+              <StyleLiNav key={item.path}>
+                <Stylelink to={item.path}> {Icon ? <Icon /> : null} <StyleA>{item.label}</StyleA>  </Stylelink>
               </StyleLiNav>
             );
             })}

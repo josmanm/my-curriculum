@@ -1,4 +1,4 @@
-import { setDay, setError } from "./sesionSlice"
+import { setDay, setError } from "./sessionSlice"
 
 export const  changeTheme =  (isDay) => async (dispatch) =>{
     try {

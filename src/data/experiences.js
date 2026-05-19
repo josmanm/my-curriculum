@@ -1,0 +1,32 @@
+export const experiences = [
+  {
+    id: 1,
+    name: "INDRA",
+    logo: "https://brandemia.org/sites/default/files/inline/images/indra_logo-antes.jpg",
+    date: "Feb-2024 - 2024",
+    status: "Joven Profesional",
+    type: "Profesional",
+    city: "Popayan",
+    country: "Colombia",
+  },
+  {
+    id: 2,
+    name: "INDRA",
+    logo: "https://brandemia.org/sites/default/files/inline/images/indra_logo-antes.jpg",
+    date: "Feb-2024 - 2024",
+    status: "En curso",
+    type: "Profesional",
+    city: "Popayan",
+    country: "Colombia",
+  },
+  {
+    id: 3,
+    name: "INDRA",
+    logo: "https://brandemia.org/sites/default/files/inline/images/indra_logo-antes.jpg",
+    date: "2017 - 2024",
+    status: "En curso",
+    type: "Profesional",
+    city: "Popayan",
+    country: "Colombia",
+  },
+];

@@ -1,22 +1,9 @@
-import axios from "axios";
-import endPoints from "./endPoints";
+import { studies } from "../data/studies";
 
 export const getStudies = async () => {
-    try {
-        const {data} = await axios.get(endPoints.studies);
-        return data;
-    } catch (error) {
-        console.error(error);
-        return error;
-    }
-}
+    return studies;
+};
 
 export const getStudy = async (id) => {
-    try {
-        const {data} = await axios.get(`${endPoints.studies}/${id}`);
-        return data;
-    } catch (error) {
-        console.error(error);
-        return error;
-    }
-}
+    return studies.find((study) => String(study.id) === String(id)) ?? null;
+};

@@ -1,9 +1,7 @@
-/* eslint-disable react/prop-types */
 import styled from "styled-components";
 import TicketIcon from "../ticketIcon/TicketIcon";
 import TicketText from "../ticketText/TicketText";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 
 
 const DivContainer = styled.div`
@@ -79,12 +77,6 @@ const H3 = styled.h3`
   color: ${(props) => props.theme.text};
   margin: 0;
 `
-const P = styled.p`
-  display: flex;
-  margin: 0;
-`
-
-
 const DivDescription = styled.div`
   display: flex;
   width: 90%;
@@ -123,19 +115,9 @@ const Path = styled.path`
 
 
 function CardProjects(props) {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setPosition({
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top
-    });
-  };
-
   return (
     <DivContainer>
-      <MovableCard  onMouseMove={handleMouseMove}>
+      <MovableCard>
           <DivTitles>
             <Img src={props.logo} alt={props.name} />
             <DivTitlesLogo>

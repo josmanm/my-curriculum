@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 function Router() {
-  const { isDay } = useSelector(store => store.sesion)
+  const { isDay } = useSelector(store => store.session)
   return (
       <ThemeProvider theme={isDay ? themeDay : themeNight}>
         <GlobalStyle />
