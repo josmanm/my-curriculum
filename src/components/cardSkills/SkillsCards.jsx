@@ -1,24 +1,34 @@
 import { useEffect, useState } from "react";
 import { getTechnologies } from "../../services/technologiesServices";
-import { Degradado, DivCard, DivSkills, H1, Img, LinkSkills } from "./CardSkillsStyle";
+import { DivCard, DivSkills, SkillName } from "./CardSkillsStyle";
 
 function SkillsCards() {
   const [technologies, setTechnologies] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getTechnologies().then(setTechnologies);
+    getTechnologies().then((data) => {
+      setTechnologies(data);
+      setLoading(false);
+    });
   }, []);
+
+  if (loading) {
+    return (
+      <DivSkills>
+        {Array.from({ length: 9 }).map((_, i) => (
+          <DivCard key={i} style={{ opacity: 0.4 }} />
+        ))}
+      </DivSkills>
+    );
+  }
 
   return (
     <DivSkills>
       {technologies.map((item) => (
-        <LinkSkills key={item.name} to={`/${item.name}`}>
-          <DivCard>
-            <H1>{item.name}</H1>
-            <Degradado />
-            <Img src={item.logo} alt={item.name} />
-          </DivCard>
-        </LinkSkills>
+        <DivCard key={item.name}>
+          <SkillName>{item.name}</SkillName>
+        </DivCard>
       ))}
     </DivSkills>
   );

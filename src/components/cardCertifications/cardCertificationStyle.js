@@ -1,36 +1,36 @@
 import styled from "styled-components";
 
-export const CardExperienceContainer = styled.div`
+export const CardCertificationContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 700px;
-    gap: 1.5rem;
+    max-width: 900px;
+    gap: 1rem;
 `;
 
-export const CardExperienceItem = styled.div`
+export const CardCertificationItem = styled.div`
     display: flex;
-    width: 100%;
+    width: 48%;
     box-sizing: border-box;
     flex-direction: column;
     align-items: flex-start;
     border-radius: 12px;
     border: 1px solid ${(props) => props.theme.border};
     background: ${(props) => props.theme.cardBg};
-    padding: 1.5rem 2rem;
+    padding: 1.5rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     &:hover {
         border-color: ${(props) => props.theme.borderhover};
-        transform: translateY(-3px);
-        box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+        transform: translateY(-4px);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.1);
     }
     @media (max-width: 768px) {
-        padding: 1.25rem 1rem;
+        width: 100%;
     }
 `;
 
 export const H1 = styled.h1`
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     font-weight: 600;
     margin: 0 0 0.25rem;
 `;
@@ -41,18 +41,9 @@ export const P = styled.p`
     color: ${(props) => props.theme.textDescription};
 `;
 
-export const BulletsList = styled.ul`
-    margin: 0.75rem 0 0;
-    padding-left: 1.25rem;
-    width: 100%;
-`;
-
-export const Bullet = styled.li`
-    font-size: 0.88rem;
-    color: ${(props) => props.theme.textCard};
-    margin-bottom: 0.4rem;
-    line-height: 1.5;
-    &::marker {
-        color: ${(props) => props.theme.accent};
-    }
+export const DivTicket = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
 `;

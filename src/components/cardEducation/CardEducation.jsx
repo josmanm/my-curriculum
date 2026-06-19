@@ -13,10 +13,24 @@ import TicketText from "../ticketText/TicketText";
 
 function CardEducation() {
   const [studies, setStudies] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getStudies().then(setStudies);
+    getStudies().then((data) => {
+      setStudies(data);
+      setLoading(false);
+    });
   }, []);
+
+  if (loading) {
+    return (
+      <CardEducationContainer>
+        {Array.from({ length: 3 }).map((_, i) => (
+          <CardEducationItem key={i} style={{ minHeight: '120px' }} />
+        ))}
+      </CardEducationContainer>
+    );
+  }
 
   return (
     <CardEducationContainer>
@@ -26,7 +40,7 @@ function CardEducation() {
           style={{ alignSelf: index % 2 === 1 ? "flex-end" : "flex-start" }}
         >
           <CardEducationDivImg>
-            <CardEducationLogo src={item.logo} alt={item.name} />
+            <CardEducationLogo src={item.logo} alt={item.name} loading="lazy" />
           </CardEducationDivImg>
           <H1>{item.name}</H1>
           <P>{item.description}</P>

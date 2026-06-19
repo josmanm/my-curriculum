@@ -1,10 +1,11 @@
-// Definir las variables de tema para día y noche
 export const themeDay = {
-    text: '#000000',
+    text: '#1e293b',
     background: '#ffffff',
-    border: '#cbc0b5',
-    body: '#111111',
-    textCard : '#000000',
-    textDescription: '#000000',
-    borderhover:  '#000000',
+    border: '#e2e8f0',
+    body: '#f8fafc',
+    textCard : '#334155',
+    textDescription: '#64748b',
+    borderhover: '#94a3b8',
+    accent: '#2563eb',
+    cardBg: '#ffffff',
   };

@@ -3,62 +3,60 @@ import styled from "styled-components";
 export const CardEducationContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width: 80%;
-    cursor: pointer;
+    width: 100%;
+    max-width: 900px;
+    gap: 1rem;
 `;
 
 export const CardEducationItem = styled.div`
     display: flex;
-    width: 49%;
+    width: 48%;
     box-sizing: border-box;
-    border: 1px solid black;
     flex-direction: column;
-    align-items: center;
-    border-radius: 10px;
-    margin-bottom: 20px;
+    align-items: flex-start;
+    border-radius: 12px;
     border: 1px solid ${(props) => props.theme.border};
-    padding: 20px;
+    background: ${(props) => props.theme.cardBg};
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     &:hover {
-        border: 1px solid ${(props) => props.theme.borderhover};
+        border-color: ${(props) => props.theme.borderhover};
+        transform: translateY(-4px);
+        box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    }
+    @media (max-width: 768px) {
+        width: 100%;
     }
 `;
 
-export const Line = styled.div`
-  height: 100%;
-  width: 1px;
-  background-color: #ccc;
-  margin: 0 16px; /* Ajusta el espacio entre la línea y el texto */
-`;
-
-
 export const CardEducationDivImg = styled.div`
-    width: 50px;
-    height: 50px;
+    width: 56px;
+    height: 56px;
+    margin-bottom: 0.5rem;
 `;
 
 export const H1 = styled.h1`
-    font-size: 1.5rem;
-    margin 0;
-    padding 0;
-    display: flex;
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem;
 `;
+
 export const P = styled.p`
-    font-size: 1rem;
-    margin 0;
-    padding 0;
-    display: flex;
+    font-size: 0.9rem;
+    margin: 0.15rem 0;
+    color: ${(props) => props.theme.textDescription};
 `;
 
 export const CardEducationLogo = styled.img`
     width: 100%;
     height: 100%;
     border-radius: 40%;
+    object-fit: contain;
 `;
 
 export const DivTicket = styled.div`
-    display: grid;
-    width: 80%;
-    grid-template-columns: repeat(3, 0.2fr);
-    align-items: center;
-    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
 `;

@@ -1,9 +1,11 @@
 export const themeNight = {
-  body: '#111111',
-  text: '#ffffff',
-  textCard : '#cbc9bd',
-  background: '#000000',
-  border: '#2c2f33',
-  textDescription: '#cbc0b5',
-  borderhover:  '#464a51'
+  body: '#0f172a',
+  text: '#f1f5f9',
+  textCard : '#cbd5e1',
+  background: '#0f172a',
+  border: '#1e293b',
+  textDescription: '#94a3b8',
+  borderhover: '#475569',
+  accent: '#60a5fa',
+  cardBg: '#1e293b',
 };
