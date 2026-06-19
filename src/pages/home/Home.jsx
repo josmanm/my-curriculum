@@ -211,6 +211,9 @@ const ThemeButton = styled.button`
     transform: rotate(25deg) scale(1.08);
     box-shadow: 0 4px 16px rgba(0,0,0,0.12);
   }
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const NavBar = styled.nav`
@@ -230,7 +233,7 @@ const NavBar = styled.nav`
   animation: ${fadeIn} 0.6s ease-out;
   @media (max-width: 768px) {
     justify-content: space-between;
-    padding: 0.75rem 1rem;
+    padding: 0.75rem 1.25rem;
     gap: 0;
   }
 `;
@@ -244,16 +247,16 @@ const NavLinks = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background: ${(props) => props.theme.background}f5;
-    backdrop-filter: blur(20px);
+    background: ${(props) => props.theme.background};
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 0;
     z-index: 200;
     opacity: ${({ open }) => (open ? 1 : 0)};
     pointer-events: ${({ open }) => (open ? 'all' : 'none')};
     transition: opacity 0.3s ease;
+    overflow-y: auto;
   }
 `;
 
@@ -283,7 +286,17 @@ const NavLink = styled.a`
     }
   }
   @media (max-width: 768px) {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+    padding: 0.8rem 0;
+    width: 200px;
+    text-align: center;
+    border-bottom: 1px solid ${(props) => props.theme.border};
+    &:last-of-type {
+      border-bottom: none;
+    }
+    &::after {
+      bottom: -2px;
+    }
   }
 `;
 
@@ -310,11 +323,34 @@ const CloseButton = styled.button`
   font-size: 2rem;
   cursor: pointer;
   position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
+  top: 1rem;
+  right: 1.25rem;
   z-index: 201;
   @media (max-width: 768px) {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+
+const MobileThemeToggle = styled.button`
+  display: none;
+  background: none;
+  border: 1px solid ${(props) => props.theme.border};
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: ${(props) => props.theme.text};
+  margin-top: 1.5rem;
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: rotate(25deg) scale(1.08);
+  }
+  @media (max-width: 768px) {
+    display: flex;
   }
 `;
 
@@ -498,6 +534,9 @@ function Home() {
           <NavLink href="#education" onClick={scrollToSection}>Educación</NavLink>
           <NavLink href="#certifications" onClick={scrollToSection}>Certificaciones</NavLink>
           <NavLink href="#experience" onClick={scrollToSection}>Experiencia</NavLink>
+          <MobileThemeToggle onClick={() => dispatch(changeTheme(!isDay))} aria-label="Cambiar tema">
+            {isDay ? <FaMoon size={18} /> : <FaSun size={18} />}
+          </MobileThemeToggle>
         </NavLinks>
       </NavBar>
 
