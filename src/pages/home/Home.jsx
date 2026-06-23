@@ -224,24 +224,29 @@ const NavBar = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
-  padding: 1rem;
+  padding: 1rem 2rem;
   background: ${(props) => props.theme.background}ee;
   backdrop-filter: blur(12px);
   border-bottom: 1px solid ${(props) => props.theme.border};
   z-index: 100;
-  animation: ${fadeIn} 0.6s ease-out;
   @media (max-width: 768px) {
     justify-content: space-between;
     padding: 0.75rem 1.25rem;
-    gap: 0;
   }
 `;
 
-const NavLinks = styled.div`
+const DesktopLinks = styled.div`
   display: flex;
   gap: 2rem;
   @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const MobileOverlay = styled.div`
+  display: none;
+  @media (max-width: 768px) {
+    display: ${({ open }) => (open ? 'flex' : 'none')};
     position: fixed;
     top: 0;
     left: 0;
@@ -249,14 +254,76 @@ const NavLinks = styled.div`
     bottom: 0;
     background: ${(props) => props.theme.background};
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    gap: 0;
     z-index: 200;
-    opacity: ${({ open }) => (open ? 1 : 0)};
-    pointer-events: ${({ open }) => (open ? 'all' : 'none')};
-    transition: opacity 0.3s ease;
-    overflow-y: auto;
+    animation: ${fadeIn} 0.2s ease-out;
+  }
+`;
+
+const MobileScrollArea = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 0.5rem;
+  margin-top: 3.5rem;
+  padding: 0 1rem;
+`;
+
+const MobileClose = styled.button`
+  position: absolute;
+  top: 0.75rem;
+  right: 1.25rem;
+  background: none;
+  border: none;
+  color: ${(props) => props.theme.text};
+  font-size: 1.8rem;
+  cursor: pointer;
+  z-index: 201;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const MobileNavLink = styled.a`
+  color: ${(props) => props.theme.textCard};
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.6rem 2rem;
+  text-align: center;
+  border-radius: 10px;
+  width: 220px;
+  transition: background 0.2s ease, color 0.2s ease;
+  &:active {
+    background: ${(props) => props.theme.cardBg};
+    color: ${(props) => props.theme.accent};
+  }
+`;
+
+const MobileFooter = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: auto;
+  padding-bottom: 2rem;
+`;
+
+const MobileThemeBtn = styled.button`
+  background: none;
+  border: 1px solid ${(props) => props.theme.border};
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: ${(props) => props.theme.text};
+  transition: transform 0.3s ease;
+  &:hover {
+    transform: rotate(25deg) scale(1.08);
   }
 `;
 
@@ -285,19 +352,6 @@ const NavLink = styled.a`
       width: 100%;
     }
   }
-  @media (max-width: 768px) {
-    font-size: 1.2rem;
-    padding: 0.8rem 0;
-    width: 200px;
-    text-align: center;
-    border-bottom: 1px solid ${(props) => props.theme.border};
-    &:last-of-type {
-      border-bottom: none;
-    }
-    &::after {
-      bottom: -2px;
-    }
-  }
 `;
 
 const HamburgerButton = styled.button`
@@ -312,45 +366,6 @@ const HamburgerButton = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-`;
-
-const CloseButton = styled.button`
-  display: none;
-  background: none;
-  border: none;
-  color: ${(props) => props.theme.text};
-  font-size: 2rem;
-  cursor: pointer;
-  position: absolute;
-  top: 1rem;
-  right: 1.25rem;
-  z-index: 201;
-  @media (max-width: 768px) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-`;
-
-const MobileThemeToggle = styled.button`
-  display: none;
-  background: none;
-  border: 1px solid ${(props) => props.theme.border};
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: ${(props) => props.theme.text};
-  margin-top: 1.5rem;
-  transition: transform 0.3s ease;
-  &:hover {
-    transform: rotate(25deg) scale(1.08);
-  }
-  @media (max-width: 768px) {
-    display: flex;
   }
 `;
 
@@ -520,13 +535,10 @@ function Home() {
       </ThemeButton>
 
       <NavBar>
-        <HamburgerButton onClick={() => setMenuOpen(!menuOpen)} aria-label="Abrir menú">
-          {menuOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
+        <HamburgerButton onClick={() => setMenuOpen(true)} aria-label="Abrir menú">
+          <FaBars size={22} />
         </HamburgerButton>
-        <NavLinks open={menuOpen}>
-          <CloseButton onClick={closeMenu} aria-label="Cerrar menú">
-            <FaTimes />
-          </CloseButton>
+        <DesktopLinks>
           <NavLink href="#about" onClick={scrollToSection}>Sobre mí</NavLink>
           <NavLink href="#skills" onClick={scrollToSection}>Habilidades</NavLink>
           <NavLink href="#softskills" onClick={scrollToSection}>Soft Skills</NavLink>
@@ -534,11 +546,28 @@ function Home() {
           <NavLink href="#education" onClick={scrollToSection}>Educación</NavLink>
           <NavLink href="#certifications" onClick={scrollToSection}>Certificaciones</NavLink>
           <NavLink href="#experience" onClick={scrollToSection}>Experiencia</NavLink>
-          <MobileThemeToggle onClick={() => dispatch(changeTheme(!isDay))} aria-label="Cambiar tema">
-            {isDay ? <FaMoon size={18} /> : <FaSun size={18} />}
-          </MobileThemeToggle>
-        </NavLinks>
+        </DesktopLinks>
       </NavBar>
+
+      <MobileOverlay open={menuOpen}>
+        <MobileClose onClick={closeMenu} aria-label="Cerrar menú">
+          <FaTimes />
+        </MobileClose>
+        <MobileScrollArea>
+          <MobileNavLink href="#about" onClick={scrollToSection}>Sobre mí</MobileNavLink>
+          <MobileNavLink href="#skills" onClick={scrollToSection}>Habilidades</MobileNavLink>
+          <MobileNavLink href="#softskills" onClick={scrollToSection}>Soft Skills</MobileNavLink>
+          <MobileNavLink href="#projects" onClick={scrollToSection}>Proyectos</MobileNavLink>
+          <MobileNavLink href="#education" onClick={scrollToSection}>Educación</MobileNavLink>
+          <MobileNavLink href="#certifications" onClick={scrollToSection}>Certificaciones</MobileNavLink>
+          <MobileNavLink href="#experience" onClick={scrollToSection}>Experiencia</MobileNavLink>
+        </MobileScrollArea>
+        <MobileFooter>
+          <MobileThemeBtn onClick={() => dispatch(changeTheme(!isDay))} aria-label="Cambiar tema">
+            {isDay ? <FaMoon size={18} /> : <FaSun size={18} />}
+          </MobileThemeBtn>
+        </MobileFooter>
+      </MobileOverlay>
 
       <HeroSection id="about">
         <ProfileImg
